@@ -1,0 +1,10 @@
+@import 'components';
+@import 'base';
+@import 'form';
+@import 'notifications';
+@import 'paginator';
+@import 'tags';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
