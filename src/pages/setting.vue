@@ -13,12 +13,12 @@
                 <TextareaInput label="介紹" id="description" v-model="form.description" class="h-28" />
               </div>
   
-              <div class="text-center order-first md:col-span-3 md:order-none">
+              <div class="order-first text-center md:col-span-3 md:order-none">
                 <ImageUpload
                   id="avatar"
                   v-model="form.avatar"
                   :default-image="defaultAvatar"
-                  image-class="aspect-w-1 aspect-h-1 rounded-full"
+                  image-class="rounded-full aspect-w-1 aspect-h-1"
                   image-wrapper-class="w-32 mx-auto"
                 />
               </div>
@@ -32,7 +32,7 @@
               </div>
             </div>
   
-            <div class="mt-6 flex justify-end">
+            <div class="flex justify-end mt-6">
               <PrimaryButton type="submit" class="w-full md:w-auto">
                 儲存設定
               </PrimaryButton>
@@ -42,6 +42,36 @@
   
         <Loading :show="loading" text="保存中..." />
       </Card>
+
+      <!-- 切換主題下拉 -->
+      <Card class="mt-10 mb-[100px]" stretch>
+        <CardContent>
+          <h4 class="text-xl font-medium tracking-wide text-gray-800">其他設定</h4>
+
+          <div class="mt-4">
+            <label for="theme" class="form-label">主題顏色</label>
+            <Select
+              id="theme"
+              v-model="theme"
+              :options="themeOptions"
+              class="max-w-[200px]"
+            >
+              <template #button>
+                <div class="inline-flex items-center">
+                  <div class="w-5 h-5 mr-2 rounded" :class="currentTheme.color"></div>
+                  {{ currentTheme.label }}
+                </div>
+              </template>
+              <template #option="{ option }">
+                <div class="inline-flex items-center">
+                  <div class="w-5 h-5 mr-2 rounded" :class="option.color"></div>
+                  {{ option.label }}
+                </div>
+              </template>
+            </Select>
+          </div>
+        </CardContent>
+      </Card>
     </Layout>
   </template>
   
@@ -49,6 +79,8 @@
   import { reactive, ref } from 'vue'
   import { promiseTimeout } from '@vueuse/core'
   import { successNotify } from '@/composables/useNotification'
+  import { useTheme } from '@/composables/useTheme'
+  
   export default {
     setup() {
       const loading = ref(false)
@@ -70,12 +102,16 @@
         loading.value = false
         successNotify('個人資料保存成功')
       }
+      const { theme, themeOptions, currentTheme } = useTheme()
       
       return {
         loading,
         form,
         defaultAvatar,
         submit,
+        theme,
+        themeOptions,
+        currentTheme,
       }
     },
   }

@@ -8,6 +8,7 @@ export default {
     "./src/**/*.{vue,js,ts,jsx,tsx}",
   ],
   theme: {
+    themeVariants: ['indigo'],
     extend: {
       colors: {
         'gray': colors.zinc
@@ -25,7 +26,8 @@ export default {
     require('@tailwindcss/forms')({
       strategy: 'class'
     }),
-    require('@tailwindcss/typography')
+    require('@tailwindcss/typography'),
+    require('tailwindcss-multi-theme'),
   ],
 }
 
