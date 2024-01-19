@@ -218,7 +218,7 @@ export default {
     </PageHeader>
 
     <!-- 內容 -->
-    <div class="mt-6 grid md:grid-cols-12 gap-4">
+    <div class="grid gap-4 mt-6 md:grid-cols-12">
       <TrendingCard
         class="md:col-span-12 lg:col-span-4"
         icon="eye"
@@ -247,29 +247,29 @@ export default {
         stretch
       />
 
-      <Card class="md:col-span-8 min-w-0" stretch>
+      <Card class="min-w-0 md:col-span-8" stretch>
         <div class="h-[300px] flex flex-col p-5">
           <h2 class="text-xl font-semibold tracking-wide text-gray-700">瀏覽人次</h2>
-          <div class="flex-grow pt-4 min-h-0">
+          <div class="flex-grow min-h-0 pt-4">
             <canvas ref="lineChartEl"></canvas>
           </div>
         </div>
       </Card>
 
-      <Card class="md:col-span-4 min-w-0" stretch>
+      <Card class="min-w-0 md:col-span-4" stretch>
         <div class="h-[300px] flex flex-col p-5">
           <h2 class="text-xl font-semibold tracking-wide text-gray-700">瀏覽裝置</h2>
-          <div class="flex-grow pt-4 min-h-0">
+          <div class="flex-grow min-h-0 pt-4">
             <canvas ref="barChartEl"></canvas>
           </div>
         </div>
       </Card>
 
       <!-- 文章列表 -->
-      <Card class="md:col-span-8 min-w-0 h-full" stretch>
+      <Card class="h-full min-w-0 md:col-span-8" stretch>
         <div class="flex justify-between p-5 pb-0">
           <h2 class="text-xl font-semibold tracking-wide text-gray-700">熱門文章</h2>
-          <RouterLink to="/posts" class="link flex items-center font-normal">
+          <RouterLink to="/posts" class="flex items-center font-normal link">
             全部文章
             <heroicons-outline-chevron-double-right class="ml-1" />
           </RouterLink>
@@ -284,7 +284,7 @@ export default {
           :show-paginator="false"
         >
           <template #column-title="{ record, value }">
-            <RouterLink :to="`/posts/${record.id}`" class="link font-normal">
+            <RouterLink :to="`/posts/${record.id}`" class="font-normal link">
               {{ value }}
             </RouterLink>
           </template>
@@ -304,17 +304,17 @@ export default {
       </Card>
 
       <!-- 最新留言 -->
-      <Card class="md:col-span-4 min-w-0 h-full" stretch>
+      <Card class="h-full min-w-0 md:col-span-4" stretch>
         <div class="p-5">
           <h2 class="text-xl font-semibold tracking-wide text-gray-700">最新留言</h2>
           <ul class="mt-4 space-y-4">
             <li class="flex" v-for="comment in comments" :key="comment.id">
-              <img class="w-8 h-8 rounded-full object-cover" :src="comment.author_avatar" alt="">
-              <div class="mt-1 ml-4 flex-grow">
-                <div class="text-gray-800 font-medium tracking-wide">
+              <img class="object-cover w-8 h-8 rounded-full" :src="comment.author_avatar" alt="">
+              <div class="flex-grow mt-1 ml-4">
+                <div class="font-medium tracking-wide text-gray-800">
                   {{ comment.author_name }}
                 </div>
-                <div class="mt-2 text-gray-500 text-sm">
+                <div class="mt-2 text-sm text-gray-500">
                   {{ comment.content }}
                 </div>
                 <div class="mt-2 px-3 py-1.5 bg-gray-100 text-gray-500 text-sm rounded">
@@ -333,9 +333,12 @@ export default {
 <script>
 import { ref, onMounted } from "vue";
 import { useLineChart, useBarChart } from '@/composables/useChart'
+import { useTheme } from '@/composables/useTheme'
 
 export default {
   setup() {
+    const { applyColor } = useTheme()
+
     const lineChartEl = ref(null)
     const barChartEl = ref(null)
 
@@ -348,12 +351,12 @@ export default {
           {
             label: '6/21 - 6/27',
             data: [0, 10, 5, 2, 20, 30, 45],
-            color: '#7C3AED', // violet-600
+            color: applyColor({ violet: '#7C3AED', indigo: '#4f46e5' }), // violet-600
           },
           {
             label: '6/14 - 6/20',
             data: [6, 25, 22, 37, 14, 8, 4],
-            color: '#C4B5FD', // violet-300
+            color: applyColor({ violet: '#C4B5FD', indigo: '#a5b4fc' }), // violet-300
           },
           ]
       )
@@ -366,12 +369,12 @@ export default {
           {
             label: '電腦',
             data: [0, 10, 5, 2, 20, 30, 45],
-            color: '#7C3AED', // violet-600
+            color: applyColor({ violet: '#7C3AED', indigo: '#4f46e5' }), // violet-600
           },
           {
             label: '手機',
             data: [6, 25, 22, 37, 14, 8, 4],
-            color: '#C4B5FD', // violet-300
+            color: applyColor({ violet: '#C4B5FD', indigo: '#a5b4fc' }), // violet-300
           },
           ]
           // 此處無修改 options，所以沒有傳入
