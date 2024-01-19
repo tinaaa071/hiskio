@@ -2,13 +2,10 @@
     <!-- 插入現有之 Modal 元件 -->
     <Modal v-model="isOpen" @success="handleSuccess" @cancel="handleCancel">
         <template #icon>
-            <heroicons-outline-exclamation class="mt-8 mx-auto w-12 h-12 text-red-600" />
+            <heroicons-outline-exclamation class="w-12 h-12 mx-auto mt-8 text-red-600 dark:text-red-500" />
         </template>
         <template v-slot:title>
-            <DialogTitle
-                as="h3"
-                class="text-2xl text-center font-medium text-red-600 tracking-wider mt-2 mb-4"
-            >
+            <DialogTitle as="h3" class="mt-2 mb-4 text-2xl font-medium tracking-wider text-center text-red-600 dark:text-red-500">
             {{ title }}
             </DialogTitle>
         </template>

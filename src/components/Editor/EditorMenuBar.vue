@@ -1,5 +1,5 @@
 <template>
-    <div class="sticky top-0 inset-0 z-10 px-3 py-2 flex items-center flex-wrap bg-white border-b border-gray-200 rounded-t-md">
+    <div class="sticky inset-0 top-0 z-10 flex flex-wrap items-center px-3 py-2 bg-white border-b border-gray-200 dark:bg-gray-700 rounded-t-md">
       <template
       v-for="(item, index) in items"
       :key="item.type === 'divider' ? `divider-${index}` : item.icon"

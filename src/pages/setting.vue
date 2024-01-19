@@ -44,9 +44,9 @@
       </Card>
 
       <!-- 切換主題下拉 -->
-      <Card class="mt-10 mb-[100px]" stretch>
+      <Card class="mt-10 mb-[120px]" stretch>
         <CardContent>
-          <h4 class="text-xl font-medium tracking-wide text-gray-800">其他設定</h4>
+          <h4 class="text-xl font-medium tracking-wide text-gray-800 dark:text-gray-200">其他設定</h4>
 
           <div class="mt-4">
             <label for="theme" class="form-label">主題顏色</label>

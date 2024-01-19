@@ -14,7 +14,7 @@
           >
     
           <!-- 預設佔位灰底區塊 -->
-          <div v-else class="flex justify-center items-center bg-gray-400 text-white">
+          <div v-else class="flex items-center justify-center text-white bg-gray-400 dark:bg-gray-600 dark:text-gray-300">
             <heroicons-outline-photograph class="w-10 h-10" />
           </div>
   
@@ -22,7 +22,7 @@
           <div v-if="modelFile">
             <button
               type="button"
-              class="absolute top-4 right-4 w-6 h-6 flex justify-center items-center bg-gray-700/50 text-white rounded-full"
+              class="absolute flex items-center justify-center w-6 h-6 text-white rounded-full top-4 right-4 bg-gray-700/50"
               @click="removeSelectedFile"
             >
               <heroicons-outline-x class="w-5 h-5" />
@@ -31,13 +31,13 @@
         </div>
       </div>
   
-      <PrimaryButton class="mt-3 w-full flex items-center" @click="selectFile">
+      <PrimaryButton class="flex items-center w-full mt-3" @click="selectFile">
         <heroicons-outline-cloud-upload class="mr-1" />
         上傳圖片
       </PrimaryButton>
   
       <div v-if="error" class="form-error">{{ error }}</div>
-      <div class="mt-2 text-gray-400 text-sm">
+      <div class="mt-2 text-sm text-gray-400">
         圖片最大 5MB
       </div>
   

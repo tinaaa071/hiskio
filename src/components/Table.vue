@@ -2,8 +2,8 @@
     <div class="overflow-x-auto" v-bind="$attrs">
       <table class="w-full">
         <thead>
-          <tr class="border-b border-gray-200">
-            <th v-if="showSelection" class="pl-5 py-3 text-left">
+          <tr class="border-b border-gray-200 dark:border-gray-500">
+            <th v-if="showSelection" class="py-3 pl-5 text-left">
               <SelectAllCheckbox
                 :state="selectAllState"
                 @update:state="updateSelectAllState"
@@ -15,7 +15,7 @@
             <th
               v-for="column in columns"
               :key="column.key"
-              class="px-5 py-3 text-left text-sm text-gray-400 font-medium tracking-wider whitespace-nowrap"
+              class="px-5 py-3 text-sm font-medium tracking-wider text-left text-gray-400 whitespace-nowrap"
             >
               {{ column.label }}
             </th>
@@ -27,10 +27,10 @@
           <tr
             v-for="(record, index) in data"
             :key="record.id"
-            :class="{ 'bg-violet-50 indigo:bg-indigo-50': rowSelectStatus[index] }"
+            :class="{ 'bg-violet-50 indigo:bg-indigo-50 dark:bg-gray-600': rowSelectStatus[index] }"
           >
 						<!-- 勾選 -->
-            <td v-if="showSelection" class="pl-5 py-3">
+            <td v-if="showSelection" class="py-3 pl-5">
               <SelectRowCheckbox
                 :state="rowSelectStatus[index]"
                 :index="index"
@@ -42,7 +42,7 @@
             <td
               v-for="column in columns"
               :key="column.key"
-              class="px-5 py-3 text-gray-600 whitespace-nowrap"
+              class="px-5 py-3 text-gray-600 dark:text-gray-300 whitespace-nowrap"
             >
               <slot
                 :name="`column-${column.key}`"
@@ -55,7 +55,7 @@
             </td>
 
 						<!-- 按鈕 -->
-            <td v-if="showActions" class="px-5 py-3 text-gray-600 whitespace-nowrap">
+            <td v-if="showActions" class="px-5 py-3 text-gray-600 dark:text-gray-300 whitespace-nowrap">
               <slot name="actions" :record="record" :confirmDeleteText="confirmDeleteText"></slot>
             </td>
           </tr>
@@ -75,13 +75,13 @@
       v-if="showPaginator"
       v-model:current-page="currentPage"
       :total-page="totalPage"
-      class="border-t border-gray-200"
+      class="border-t border-gray-200 dark:border-gray-500"
     />
 
     <!-- 彈出按鈕 -->
     <ActionsBar :show="showActionsBar">
-        <div class="text-gray-600 text-sm sm:text-base">
-        已選取 {{ selectedIds.length }} 筆資料
+        <div class="text-sm text-gray-600 dark:text-white sm:text-base">
+          已選取 {{ selectedIds.length }} 筆資料
         </div>
 
         <div class="space-x-2">

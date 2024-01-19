@@ -10,12 +10,12 @@
           leave-from="opacity-100"
           leave-to="opacity-0"
         >
-          <DialogOverlay class="fixed inset-0 bg-black/25" />
+          <DialogOverlay class="fixed inset-0 bg-gray-700/20 dark:bg-gray-900/50" />
         </TransitionChild>
   
         <div class="fixed inset-0 overflow-y-auto">
           <div
-            class="flex min-h-full items-center justify-center p-4 text-center"
+            class="flex items-center justify-center min-h-full p-4 text-center"
           >
             <TransitionChild
               as="template"
@@ -26,15 +26,15 @@
               leave-from="opacity-100 scale-100"
               leave-to="opacity-0 scale-95"
             >
-              <DialogPanel
-                class="w-full max-w-sm transform overflow-hidden rounded-2xl bg-white text-left align-middle shadow-xl transition-all"
-              >
+            <div
+              class="inline-block w-full max-w-sm my-8 overflow-hidden text-left align-middle transition-all transform bg-white shadow-xl dark:bg-gray-700 rounded-2xl"
+            >
                 <div class="px-6 py-4">
                     <slot name="icon"></slot>
                     <slot name="title">
                         <DialogTitle
                           as="h3"
-                          class="text-2xl text-center font-medium text-gray-900"
+                          class="text-2xl font-medium text-center text-gray-900"
                         >
                         {{ title }}
                         </DialogTitle>
@@ -52,7 +52,7 @@
                         </PrimaryButton>
                     </slot>
                 </div>
-              </DialogPanel>
+              </div>
             </TransitionChild>
           </div>
         </div>

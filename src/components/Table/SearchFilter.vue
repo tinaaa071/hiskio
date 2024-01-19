@@ -1,9 +1,9 @@
 <template>
     <div class="flex items-center">
-      <div class="flex flex-grow shadow rounded-md md:flex-grow-0">
+      <div class="flex flex-grow rounded-md shadow md:flex-grow-0">
         <!-- 篩選 -->
         <Popover class="relative flex-shrink-0 -mr-px focus:z-[1]">
-          <PopoverButton class="form-select pl-4 text-gray-600 rounded-r-none">
+          <PopoverButton class="pl-4 rounded-r-none form-select">
             篩選
           </PopoverButton>
   
@@ -12,10 +12,10 @@
                 class="absolute z-10 origin-top-left"
                 v-slot="{ close }"
             >
-                <div class="mt-2 p-4 w-[270px] bg-white border border-gray-200 rounded-md shadow-lg space-y-4">
+            <div class="mt-2 p-4 w-[270px] bg-white dark:bg-gray-700 dark:text-gray-100 border border-gray-200 dark:border-gray-600 rounded-md shadow-lg space-y-4">
                 <div>
-                    <label class="text-gray-400 text-sm">建立日期</label>
-                    <div class="mt-1 flex">
+                    <label class="text-sm text-gray-400">建立日期</label>
+                    <div class="flex mt-1">
                     <select
                         v-model="form.created_date_compare"
                         class="form-select form-select-sm w-[100px] -mr-px rounded-r-none focus:z-[1]"
@@ -32,8 +32,8 @@
                 </div>
 
                 <div>
-                    <label class="text-gray-400 text-sm">瀏覽次數</label>
-                    <div class="mt-1 flex">
+                    <label class="text-sm text-gray-400">瀏覽次數</label>
+                    <div class="flex mt-1">
                     <select
                         v-model="form.visits_compare"
                         class="form-select form-select-sm w-[100px] -mr-px rounded-r-none focus:z-[1]"
@@ -50,7 +50,7 @@
                 </div>
 
                 <div>
-                    <label class="text-gray-400 text-sm">標籤</label>
+                    <label class="text-sm text-gray-400">標籤</label>
                     <div class="mt-1">
                     <label
                         v-for="tag in tagOptions"
@@ -59,7 +59,7 @@
                     >
                         <input
                         type="checkbox"
-                        class="form-checkbox mr-1"
+                        class="mr-1 form-checkbox"
                         v-model="form.tags"
                         :value="tag"
                         >
@@ -69,13 +69,13 @@
                 </div>
 
                 <div>
-                    <label class="text-gray-400 text-sm">軟刪除</label>
+                    <label class="text-sm text-gray-400">軟刪除</label>
                     <div class="mt-1">
                     <!-- 默認 -->
                     <label class="flex items-center">
                         <input
                         type="radio"
-                        class="form-radio mr-1"
+                        class="mr-1 form-radio"
                         v-model="form.soft_delete"
                         value="default"
                         >
@@ -85,7 +85,7 @@
                     <label class="flex items-center">
                         <input
                         type="radio"
-                        class="form-radio mr-1"
+                        class="mr-1 form-radio"
                         v-model="form.soft_delete"
                         value="contains"
                         >
@@ -95,7 +95,7 @@
                     <label class="flex items-center">
                         <input
                         type="radio"
-                        class="form-radio mr-1"
+                        class="mr-1 form-radio"
                         v-model="form.soft_delete"
                         value="only"
                         >
@@ -129,7 +129,7 @@
   
       <button
       type="button"
-      class="ml-2 flex-shrink-0 text-gray-400 hover:text-gray-500 transition-colors duration-100"
+      class="flex-shrink-0 ml-2 text-gray-400 transition-colors duration-100 hover:text-gray-500"
       @click="reset"
       >
         清除

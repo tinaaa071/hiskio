@@ -33,7 +33,7 @@
             >
                 <!-- 文章標題、簡介 -->
                 <template #column-title="{ record, value }">
-                    <RouterLink :to="`/posts/${record.id}`" class="link font-normal">
+                    <RouterLink :to="`/posts/${record.id}`" class="font-normal link">
                         {{ value }}
                     </RouterLink>
                 </template>

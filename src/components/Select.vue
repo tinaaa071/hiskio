@@ -1,13 +1,13 @@
 <template>
     <Listbox v-model="selected">
       <div class="relative">
-        <ListboxButton class="py-2 pl-4 pr-10 text-left text-gray-600 shadow form-select">
+        <ListboxButton class="py-2 pl-4 pr-10 text-left shadow form-select">
           <slot name="button"></slot>
         </ListboxButton>
   
         <TransitionZoom>
           <ListboxOptions
-            class="absolute z-[1] w-full py-1 mt-1 overflow-auto text-base bg-white rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none origin-top-right sm:text-sm"
+          class="absolute z-[1] w-full py-1 mt-1 overflow-auto text-base bg-white dark:bg-gray-700 rounded-md shadow-lg max-h-60 ring-1 ring-black ring-opacity-5 focus:outline-none origin-top-right sm:text-sm"
           >
             <ListboxOption
               v-slot="{ active, selected }"
@@ -17,8 +17,8 @@
               as="template"
             >
               <li
-                class="relative px-4 py-2 text-gray-800 cursor-pointer select-none"
-                :class="{ 'bg-gray-100': active }"
+              class="relative px-4 py-2 text-gray-800 cursor-pointer select-none dark:text-gray-100"
+              :class="{ 'bg-gray-100 dark:bg-gray-600': active }"
               >
                 <slot name="option" :option="option" :selected="selected" :active="active"></slot>
               </li>

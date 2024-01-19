@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col min-h-screen sm:flex-row">
     <!-- 左側選單欄 -->
-    <div class="relative z-20 flex flex-col justify-between flex-shrink-0 w-full text-white bg-violet-600 indigo:bg-indigo-600 indigo:bg-indigo-600 sm:w-64 sm:fixed sm:inset-y-0">
+    <div class="relative z-20 flex flex-col justify-between flex-shrink-0 w-full text-white bg-violet-600 indigo:bg-indigo-600 dark:bg-gray-700 sm:w-64 sm:fixed sm:inset-y-0">
       <!-- Logo -->
       <div class="flex items-center justify-between h-16 px-3 sm:justify-center r">
         <div class="flex items-center justify-center">
@@ -33,7 +33,7 @@
             <li v-for="item in menuItems" :key="item.to">
               <RouterLink :to="item.to" 
               class="flex px-3 py-3 items- center sm:px-5 "
-              :class="isActive(item.to) ? 'text-white' : 'text-violet-400 indigo:text-indigo-400 indigo:text-indigo-400 hover:text-white'">
+              :class="isActive(item.to) ? 'text-white' : 'text-violet-400 indigo:text-indigo-400 hover:text-white dark:text-gray-400 dark:hover:text-white'">
                 <component :is="item.icon" class="w-5 h-5 mr-2" />
                 {{ item.text }}
               </RouterLink>
@@ -41,7 +41,7 @@
           </ul>
 
           <!-- 用戶名稱區塊（手機版） -->
-          <div class="py-1 mt-2 border-t border-violet-400 indigo:border-indigo-400 indigo:border-indigo-400 sm:hidden">
+          <div class="py-1 mt-2 border-t border-violet-400 indigo:border-indigo-400 dark:border-gray-500 sm:hidden">
             <div class="flex px-3 py-3 items- center">
               <img class="object-cover w-8 h-8 mr-2 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
               <div class="font-medium tracking-wide">Tina</div>
@@ -55,7 +55,7 @@
                   <component 
                   :is="item.tag"
                   :to="item.to"
-                  class="flex items-center w-full px-4 py-3 text-violet-400 indigo:text-indigo-400 indigo:text-indigo-400 hover:text-white"
+                  class="flex items-center w-full px-4 py-3 text-violet-400 indigo:text-indigo-400 hover:text-white dark:text-gray-400 dark:hover:text-white"
                   @click="item.onClick">
                     {{ item.text }}
                   </component>
@@ -65,7 +65,7 @@
           </div>
 
           <!-- 用戶名稱區塊（電腦版） -->
-          <div class="hidden px-5 py-4 border-t sm:flex sm:justify-between sm:items-center border-violet-400 indigo:border-indigo-400 indigo:border-indigo-400">
+          <div class="hidden px-5 py-4 border-t sm:flex sm:justify-between sm:items-center border-violet-400 indigo:border-indigo-400 dark:border-gray-500">
             <div class="flex items-center">
               <img class="object-cover w-8 h-8 mr-2 rounded-full" src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="">
               <div class="font-medium tracking-wide">Tina</div>
@@ -75,13 +75,13 @@
             <!-- 預設不會渲染出 html，使用 as 設定要渲染出的標籤 -->
             <Menu as="div" class="relative">
               <!-- 按鈕 -->
-              <MenuButton class="flex items-center justify-center transition-colors duration-100 rounded w-7 h-7 hover:bg-violet-500 indigo:hover:bg-indigo-500 indigo:hover:bg-indigo-500" type="button">
+              <MenuButton class="flex items-center justify-center transition-colors duration-100 rounded w-7 h-7 hover:bg-violet-500 indigo:hover:bg-indigo-500 dark:hover:bg-gray-500" type="button">
                 <heroicons-outline-dots-vertical class="w-4 h-4" />
               </MenuButton>
 
               <!-- 動畫 -->
               <TransitionZoom>
-                <MenuItems class="absolute bottom-0 flex flex-col w-32 ml-2 overflow-hidden origin-bottom-left bg-white rounded-md shadow-lg left-full">
+                <MenuItems class="absolute bottom-0 flex flex-col w-32 ml-2 overflow-hidden origin-bottom-left bg-white rounded-md shadow-lg left-full dark:bg-gray-600">
                   <MenuItem 
                   v-slot="{ active }" 
                   v-for="item in userMenuItems"
@@ -89,8 +89,8 @@
                     <component
                     :is="item.tag"
                     :to="item.to" 
-                    class="px-3 py-2 text-base font-normal text-left text-gray-700"
-                    :class="active ? 'bg-gray-100' : ''"
+                    class="px-3 py-2 text-base font-normal text-left text-gray-700 dark:text-white"
+                    :class="active ? 'bg-gray-100 dark:bg-gray-500' : ''"
                     @click="item.onClick"
                     >
                       {{ item.text }}
@@ -104,7 +104,7 @@
     </div>
 
     <!-- 右側內容區 -->
-    <div class="relative z-10 flex-grow min-w-0 bg-gray-50 sm:pl-64">
+    <div class="relative z-10 flex-grow min-w-0 bg-gray-50 dark:bg-gray-800 sm:pl-64">
       <div class="p-6 sm:px-10 sm:py-8">
         <slot></slot>
       </div>

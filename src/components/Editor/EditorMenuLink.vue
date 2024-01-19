@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
       <button
-        class="mr-1 w-7 h-7 p-1 rounded"
+        class="p-1 mr-1 rounded w-7 h-7"
         :class="isActive() ? 'bg-violet-600 indigo:bg-indigo-600 text-white' : 'hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white'"
         :title="title"
         @click="handleAction"
@@ -9,11 +9,11 @@
         <RemixIcon :icon="icon" />
       </button>
   
-      <div v-if="showPopover" class="mt-1.5 absolute top-full left-[-103px] md:left-auto w-[300px] p-2 flex items-center bg-white border border-gray-200 rounded shadow-md">
+      <div v-if="showPopover" class="mt-1.5 absolute top-full left-[-103px] md:left-auto w-[300px] p-2 flex items-center bg-white dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded shadow-md">
         <input
           type="text"
           ref="urlEl"
-          class="form-input text-sm px-2 py-1"
+          class="px-2 py-1 text-sm form-input"
           placeholder="連結..."
           v-model="url"
           @keyup.enter="handleSubmit"
@@ -22,7 +22,7 @@
         <button
           type="button"
           title="插入連結"
-          class="ml-1 flex-shrink-0 w-7 h-7 p-1 hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white rounded"
+          class="flex-shrink-0 p-1 ml-1 rounded w-7 h-7 hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white"
         >
           <RemixIcon icon="check-line" />
         </button>
@@ -30,7 +30,7 @@
         <button
           type="button"
           title="取消連結"
-          class="ml-1 flex-shrink-0 w-7 h-7 p-1 hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white rounded"
+          class="flex-shrink-0 p-1 ml-1 rounded w-7 h-7 hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white"
           @click="handleUnlink"
         >
           <RemixIcon icon="link-unlink" />
@@ -40,7 +40,7 @@
         :href="url"
         target="_blank"
         title="瀏覽網頁"
-        class="ml-1 flex-shrink-0 w-7 h-7 p-1 hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white rounded"
+        class="flex-shrink-0 p-1 ml-1 rounded w-7 h-7 hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white"
         >
           <RemixIcon icon="external-link-line" />
         </a>

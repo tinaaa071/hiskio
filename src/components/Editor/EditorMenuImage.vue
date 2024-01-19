@@ -1,7 +1,7 @@
 <template>
     <div class="relative">
       <button
-        class="mr-1 w-7 h-7 p-1 rounded"
+        class="p-1 mr-1 rounded w-7 h-7"
         :class="showPopover ? 'bg-violet-600 indigo:bg-indigo-600 text-white' : 'hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white'"
         :title="title"
         @click="handleAction"
@@ -9,7 +9,7 @@
         <RemixIcon :icon="icon" />
       </button>
   
-      <div v-if="showPopover" ref="popoverEl" class="mt-1.5 absolute top-full left-[-103px] md:left-auto w-[300px] bg-white border border-gray-200 rounded shadow-md">
+      <div v-if="showPopover" ref="popoverEl" class="mt-1.5 absolute top-full left-[-103px] md:left-auto w-[300px] bg-white dark:bg-gray-600 border border-gray-200 dark:border-gray-500 rounded shadow-md">
         <TabGroup>
           <!-- 按鈕 -->
           <TabList class="flex items-center space-x-2 px-3 pt-2.5 border-b border-gray-200">
@@ -22,7 +22,11 @@
               <button
                 type="button"
                 class="pb-1 text-sm tracking-wide border-b-2"
-                :class="selected ? 'text-violet-600 indigo:text-indigo-600 border-violet-600 indigo:border-indigo-600' : 'text-gray-500 border-transparent'"
+                :class="
+                selected
+                  ? 'text-violet-600 indigo:text-indigo-600 dark:text-white border-violet-600 indigo:border-indigo-600 dark:border-white'
+                  : 'text-gray-500 dark:text-gray-400 border-transparent'
+              "
               >
                 {{ label }}
               </button>
@@ -35,7 +39,7 @@
               <input
                 type="text"
                 ref="urlEl"
-                class="form-input text-sm px-2 py-1"
+                class="px-2 py-1 text-sm form-input"
                 placeholder="圖片連結..."
                 v-model="url"
                 @keyup.enter="handleSubmit"
@@ -44,7 +48,7 @@
               <button
                 type="button"
                 title="插入連結"
-                class="ml-1 flex-shrink-0 w-7 h-7 p-1 hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white rounded"
+                class="flex-shrink-0 p-1 ml-1 rounded w-7 h-7 hover:bg-violet-600 indigo:hover:bg-indigo-600 hover:text-white"
                 @click="handleSubmit"
               >
                 <RemixIcon icon="check-line" />
@@ -52,7 +56,7 @@
             </TabPanel>
   
             <TabPanel>
-              <PrimaryButton class="btn-sm w-full flex items-center" @click="selectFile">
+              <PrimaryButton class="flex items-center w-full btn-sm" @click="selectFile">
                 <heroicons-outline:cloud-upload class="mr-1" />選擇圖片
               </PrimaryButton>
             </TabPanel>

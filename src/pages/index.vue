@@ -249,7 +249,7 @@ export default {
 
       <Card class="min-w-0 md:col-span-8" stretch>
         <div class="h-[300px] flex flex-col p-5">
-          <h2 class="text-xl font-semibold tracking-wide text-gray-700">瀏覽人次</h2>
+          <h2 class="text-xl font-semibold tracking-wide text-gray-700 dark:text-gray-100">瀏覽人次</h2>
           <div class="flex-grow min-h-0 pt-4">
             <canvas ref="lineChartEl"></canvas>
           </div>
@@ -258,7 +258,7 @@ export default {
 
       <Card class="min-w-0 md:col-span-4" stretch>
         <div class="h-[300px] flex flex-col p-5">
-          <h2 class="text-xl font-semibold tracking-wide text-gray-700">瀏覽裝置</h2>
+          <h2 class="text-xl font-semibold tracking-wide text-gray-700 dark:text-gray-100">瀏覽裝置</h2>
           <div class="flex-grow min-h-0 pt-4">
             <canvas ref="barChartEl"></canvas>
           </div>
@@ -268,7 +268,7 @@ export default {
       <!-- 文章列表 -->
       <Card class="h-full min-w-0 md:col-span-8" stretch>
         <div class="flex justify-between p-5 pb-0">
-          <h2 class="text-xl font-semibold tracking-wide text-gray-700">熱門文章</h2>
+          <h2 class="text-xl font-semibold tracking-wide text-gray-700 dark:text-gray-100">熱門文章</h2>
           <RouterLink to="/posts" class="flex items-center font-normal link">
             全部文章
             <heroicons-outline-chevron-double-right class="ml-1" />
@@ -306,18 +306,18 @@ export default {
       <!-- 最新留言 -->
       <Card class="h-full min-w-0 md:col-span-4" stretch>
         <div class="p-5">
-          <h2 class="text-xl font-semibold tracking-wide text-gray-700">最新留言</h2>
+          <h2 class="text-xl font-semibold tracking-wide text-gray-700 dark:text-gray-100">最新留言</h2>
           <ul class="mt-4 space-y-4">
             <li class="flex" v-for="comment in comments" :key="comment.id">
               <img class="object-cover w-8 h-8 rounded-full" :src="comment.author_avatar" alt="">
               <div class="flex-grow mt-1 ml-4">
-                <div class="font-medium tracking-wide text-gray-800">
+                <div class="font-medium tracking-wide text-gray-800 dark:text-gray-100">
                   {{ comment.author_name }}
                 </div>
-                <div class="mt-2 text-sm text-gray-500">
+                <div class="mt-2 text-sm text-gray-500 dark:text-gray-400">
                   {{ comment.content }}
                 </div>
-                <div class="mt-2 px-3 py-1.5 bg-gray-100 text-gray-500 text-sm rounded">
+                <div class="mt-2 px-3 py-1.5 bg-gray-100 dark:bg-gray-600 text-gray-500 dark:text-gray-400 text-sm rounded">
                   留言文章：<RouterLink :to="`/posts/${comment.post_id}`" class="link">{{ comment.post_title }}</RouterLink>
                 </div>
               </div>
@@ -351,12 +351,12 @@ export default {
           {
             label: '6/21 - 6/27',
             data: [0, 10, 5, 2, 20, 30, 45],
-            color: applyColor({ violet: '#7C3AED', indigo: '#4f46e5' }), // violet-600
+            color: applyColor({ violet: '#7C3AED', indigo: '#4f46e5', dark: '#C4B5FD' }), // violet-600
           },
           {
             label: '6/14 - 6/20',
             data: [6, 25, 22, 37, 14, 8, 4],
-            color: applyColor({ violet: '#C4B5FD', indigo: '#a5b4fc' }), // violet-300
+            color: applyColor({ violet: '#C4B5FD', indigo: '#a5b4fc', dark: '#7C3AED' }), // violet-300
           },
           ]
       )
@@ -369,12 +369,12 @@ export default {
           {
             label: '電腦',
             data: [0, 10, 5, 2, 20, 30, 45],
-            color: applyColor({ violet: '#7C3AED', indigo: '#4f46e5' }), // violet-600
+            color: applyColor({ violet: '#7C3AED', indigo: '#4f46e5', dark: '#C4B5FD' }), // violet-600
           },
           {
             label: '手機',
             data: [6, 25, 22, 37, 14, 8, 4],
-            color: applyColor({ violet: '#C4B5FD', indigo: '#a5b4fc' }), // violet-300
+            color: applyColor({ violet: '#C4B5FD', indigo: '#a5b4fc', dark: '#7C3AED' }), // violet-300
           },
           ]
           // 此處無修改 options，所以沒有傳入
